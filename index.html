@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Form with Bootstrap and Star Rating</title>
+
+    Bootstrap:
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        #experienceLabel {
+            margin-bottom: auto;
+        }
+        
+        .star-rating {
+            direction: rtl;
+            display: inline-flex;
+            font-size: 1.5rem;
+        }
+        
+        .star-rating input[type=radio] {
+            display: none;
+        }
+        
+        .star-rating label {
+            color: #ddd;
+            cursor: pointer;
+            font-size: 2rem;
+            padding: 0.1em;
+        }
+        
+        .star-rating input[type=radio]:checked~label {
+            color: #f5b301;
+        }
+        
+        .star-rating label:hover,
+        .star-rating label:hover~label {
+            color: #f5b301;
+        }
+        /* Custom table styles */
+        
+        .rating-table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        
+        .rating-table th {
+            border: none;
+            text-align: center;
+            vertical-align: middle;
+        }
+        
+        .rating-table td {
+            border: none;
+            vertical-align: middle;
+            text-align: center;
+        }
+        
+        .rating-table td:first-child {
+            text-align: left;
+        }
+        
+        .rating-table tbody tr:nth-child(odd) {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+        
+        .rating-table tbody tr:nth-child(even) {
+            background-color: rgba(0, 0, 0, 0);
+        }
+        
+        .btn-primary {
+            background-color: lightgrey;
+            color: black;
+            border: none;
+            margin-top: 10px;
+            float: left;
+            clear: both;
+        }
+        
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        .form-group label {
+            margin-bottom: 0.5rem;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container mt-5">
+        <h2 class="text-center">Survey Form</h2>
+        <form id="surveyForm">
+            <!-- Name fields row -->
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label for="name">Name <span class="text-danger">*</span></label>
+                </div>
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" id="firstName" placeholder="First Name" required>
+                    <label for="firstName">First Name</label>
+                </div>
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" id="lastName" placeholder="Last Name" required>
+                    <label for="lastName">Last Name</label>
+                </div>
+            </div>
+
+            Email:
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" placeholder="Email" required>
+                </div>
+            </div>
+
+            Experience:
+            <div class="form-row">
+                <div class="form-group col-md-12" id="experienceLabel">
+                    <label for="experience">Your Experience <span class="text-danger">*</span></label>
+                </div>
+            </div>
+
+            Experience Rating:
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <div class="star-rating" id="starRating">
+                        <input type="radio" id="star5" name="experience" value="5" required>
+                        <label for="star5" title="5 stars">&#9733;</label>
+                        <input type="radio" id="star4" name="experience" value="4" required>
+                        <label for="star4" title="4 stars">&#9733;</label>
+                        <input type="radio" id="star3" name="experience" value="3" required>
+                        <label for="star3" title="3 stars">&#9733;</label>
+                        <input type="radio" id="star2" name="experience" value="2" required>
+                        <label for="star2" title="2 stars">&#9733;</label>
+                        <input type="radio" id="star1" name="experience" value="1" required>
+                        <label for="star1" title="1 star">&#9733;</label>
+                    </div>
+                    <div class="invalid-feedback">
+                        Select your experience.
+                    </div>
+                </div>
+                <div>
+                    <div class="col-md-12" style="padding-left: 0px">
+                        <p>Overall, how would you rate your experience with us?</p>
+                    </div>
+                </div>
+            </div>
+
+            Satisfaction table:
+            <div class="form-row mt-4">
+                <div class="col-md-12">
+                    <label>Are you satisfied with:<span class="text-danger">*</span></label>
+                    <table class="table rating-table">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Very Unsatisfied</th>
+                                <th>Unsatisfied</th>
+                                <th>Normal</th>
+                                <th>Satisfied</th>
+                                <th>Very Satisfied</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Purchase</td>
+                                <td><input type="radio" name="purchase" value="1" required></td>
+                                <td><input type="radio" name="purchase" value="2" required></td>
+                                <td><input type="radio" name="purchase" value="3" required></td>
+                                <td><input type="radio" name="purchase" value="4" required></td>
+                                <td><input type="radio" name="purchase" value="5" required></td>
+                            </tr>
+                            <tr>
+                                <td>Service</td>
+                                <td><input type="radio" name="service" value="1" required></td>
+                                <td><input type="radio" name="service" value="2" required></td>
+                                <td><input type="radio" name="service" value="3" required></td>
+                                <td><input type="radio" name="service" value="4" required></td>
+                                <td><input type="radio" name="service" value="5" required></td>
+                            </tr>
+                            <tr>
+                                <td>Company Overall</td>
+                                <td><input type="radio" name="companyOverall" value="1" required></td>
+                                <td><input type="radio" name="companyOverall" value="2" required></td>
+                                <td><input type="radio" name="companyOverall" value="3" required></td>
+                                <td><input type="radio" name="companyOverall" value="4" required></td>
+                                <td><input type="radio" name="companyOverall" value="5" required></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            Likable Table:
+            <div class="form-row mt-4">
+                <div class="col-md-12">
+                    <label>Did you like it:<span class="text-danger">*</span></label>
+                    <table class="table rating-table">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Very Unlikely</th>
+                                <th>Unlikely</th>
+                                <th>Normal</th>
+                                <th>Likely</th>
+                                <th>Very Likely</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Buy from us again</td>
+                                <td><input type="radio" name="purchase" value="1" required></td>
+                                <td><input type="radio" name="purchase" value="2" required></td>
+                                <td><input type="radio" name="purchase" value="3" required></td>
+                                <td><input type="radio" name="purchase" value="4" required></td>
+                                <td><input type="radio" name="purchase" value="5" required></td>
+                            </tr>
+                            <tr>
+                                <td>Recommend our<br>product to others</td>
+                                <td><input type="radio" name="service" value="1" required></td>
+                                <td><input type="radio" name="service" value="2" required></td>
+                                <td><input type="radio" name="service" value="3" required></td>
+                                <td><input type="radio" name="service" value="4" required></td>
+                                <td><input type="radio" name="service" value="5" required></td>
+                            </tr>
+                            <tr>
+                                <td>Recommend our<br>company to others</td>
+                                <td><input type="radio" name="companyOverall" value="1" required></td>
+                                <td><input type="radio" name="companyOverall" value="2" required></td>
+                                <td><input type="radio" name="companyOverall" value="3" required></td>
+                                <td><input type="radio" name="companyOverall" value="4" required></td>
+                                <td><input type="radio" name="companyOverall" value="5" required></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- Additional comments row -->
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label for="text"><strong>Additional comments or suggestions</strong></label>
+                    <textarea class="form-control" id="text" rows="3"></textarea>
+                </div>
+            </div>
+            <!-- Submit button row -->
+            <div class="form-row">
+                <div class="col-md-12 text-center">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    Bootstrap and JSS dependencies:
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // JavaScript to handle form submission and display alert
+        document.getElementById('surveyForm').addEventListener('submit', function(event) {
+            // Prevent the default form submission
+            event.preventDefault();
+
+            // Get form data
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const email = document.getElementById('email').value;
+            const experience = document.querySelector('input[name="experience"]:checked').value;
+
+            // Satisfaction ratings
+            const purchase = document.querySelector('input[name="purchase"]:checked').value;
+            const service = document.querySelector('input[name="service"]:checked').value;
+            const companyOverall = document.querySelector('input[name="companyOverall"]:checked').value;
+
+
+            const additionalComments = document.getElementById('text').value;
+
+
+            const alertMessage = `
+            Name: ${firstName} ${lastName}
+            Email: ${email}
+            Experience: ${experience} stars
+            Satisfaction Ratings:
+            - Purchase: ${purchase}
+            - Service: ${service}
+            - Company Overall: ${companyOverall}
+            Additional Comments: ${additionalComments}
+        `;
+
+
+            console.log("Survey form data: ", alertMessage);
+            alert(alertMessage);
+            document.getElementById('surveyForm').reset();
+        });
+    </script>
+
+</body>
+
+</html>
